@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Layout Tabel</title>
+	<style>
+		/* Aturan dasar: ukuran elemen menghitung padding dan border di dalam dimensinya. */
+		* {
+			box-sizing: border-box;
+		}
+
+		/* Mengatur jarak luar, jenis huruf, dan warna teks halaman. */
+		body {
+			margin: 10px;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #111;
+		}
+
+		/* Tabel utama membagi halaman menjadi baris-baris layout. */
+		.layout {
+			width: 100%;
+			height: 360px;
+			border-collapse: collapse;
+			table-layout: fixed;
+		}
+
+		.layout td {
+			padding: 0;
+			font-size: 12px;
+		}
+
+		/* Header dan footer memakai warna yang sama serta teks di tengah. */
+		.site-header,
+		.site-footer {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border: 1px solid #f39b00;
+			background: #ffe7c9;
+			text-align: center;
+		}
+
+		/* Tinggi masing-masing area atas dan bawah halaman. */
+		.site-header {
+			height: 60px;
+		}
+
+		.site-footer {
+			height: 40px;
+		}
+
+		/* Baris navigasi menggunakan warna biru dan teks di tengah. */
+		.site-nav {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 40px;
+			border: 1px solid #5681dc;
+			background: #dce8fb;
+			text-align: center;
+		}
+
+		/* Area konten utama dan kolom artikel berwarna merah muda. */
+		.content {
+			height: 220px;
+		}
+
+		.article {
+			width: 78%;
+			border: 1px solid #ec5555;
+			background: #f7cece;
+			vertical-align: middle;
+		}
+
+		/* Membatasi lebar teks dan mengatur posisinya di dalam kolom artikel. */
+		.article-content {
+			position: relative;
+			top: -26px;
+			max-width: 380px;
+			margin: 0 0 0 40px;
+		}
+
+		/* Mengatur jarak dan ukuran judul artikel. */
+		.article h1 {
+			margin: 0 0 16px;
+			font-size: 24px;
+		}
+
+		/* Membuat paragraf artikel lebih mudah dibaca. */
+		.article p {
+			margin: 0;
+			line-height: 1.25;
+		}
+
+		/* Kolom samping berisi menu dan memakai warna hijau. */
+		.sidebar {
+			border: 1px solid #83c66b;
+			background: #d6e8d2;
+			vertical-align: middle;
+		}
+
+		/* Mengatur judul menu, posisi aside, dan indentasi daftar. */
+		.sidebar h2 {
+			margin: 0 0 8px;
+			font-size: 12px;
+		}
+
+		.sidebar aside {
+			position: relative;
+			top: -8px;
+		}
+
+		.sidebar ul {
+			margin: 0;
+			padding-left: 40px;
+		}
+
+		/* Penyesuaian layout untuk layar kecil. */
+		@media (max-width: 520px) {
+			body {
+				margin: 8px;
+			}
+
+			.layout {
+				height: 420px;
+			}
+
+			.article {
+				width: 68%;
+			}
+
+			.article h1 {
+				font-size: 20px;
+			}
+
+			.sidebar ul {
+				padding-left: 22px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<!-- Tabel utama: dua kolom, dengan artikel lebih lebar daripada sidebar. -->
+	<table class="layout">
+		<colgroup>
+			<col style="width: 78%">
+			<col style="width: 22%">
+		</colgroup>
+		<tbody>
+			<!-- Baris 1: header membentang selebar dua kolom tabel. -->
+			<tr>
+				<td colspan="2">
+					<header class="site-header">HEADER</header>
+				</td>
+			</tr>
+			<!-- Baris 2: navigasi juga membentang selebar tabel. -->
+			<tr>
+				<td colspan="2">
+					<nav class="site-nav" aria-label="Navigasi utama">NAVIGASI</nav>
+				</td>
+			</tr>
+			<!-- Baris 3: artikel utama dan menu samping berada berdampingan. -->
+			<tr class="content">
+				<td class="article">
+					<main>
+						<article class="article-content">
+							<h1>Heading 1</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						</article>
+					</main>
+				</td>
+				<td class="sidebar">
+					<aside aria-label="Menu">
+						<h2>Menu:</h2>
+						<ul>
+							<li>Home</li>
+							<li>Berita</li>
+							<li>Layanan</li>
+							<li>Kontak</li>
+						</ul>
+					</aside>
+				</td>
+			</tr>
+			<!-- Baris 4: footer membentang selebar dua kolom tabel. -->
+			<tr>
+				<td colspan="2">
+					<footer class="site-footer">FOOTER</footer>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
